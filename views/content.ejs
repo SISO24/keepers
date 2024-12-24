@@ -1,0 +1,354 @@
+<%- include('partials/header.ejs'); -%>
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Content</title>
+
+    <style>
+      body {
+        /*background-image: url("./keepersbg_page-0001_page-0001.jpg");*/
+        background-size: cover;
+        padding: 0;
+        margin: 0;
+      
+      }
+
+      .main {
+        width: 100%;
+        height: 275px;
+        background-color: bisque;
+        flex-wrap: wrap;
+      }
+
+      .header {
+        width: 100%;
+        height: 4px;
+        margin: 5px;
+        padding: 5px;
+        position: relative;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 30px;
+        color: white;
+      }
+ 
+ 
+     
+.p{
+  transform: translateY(900%);
+  align-items: center;
+  font-size: medium;
+  justify-content: end;
+  font-family: Arial, Helvetica, sans-serif;
+
+}
+
+      .btn {
+        display: inline-block;
+        position: relative;
+        justify-content: center;
+       
+        align-items: center;
+        margin: 10px;
+        width: 280px;
+        height: 45px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        border-radius: 25%;
+        transform: translateY(-50px);
+        border-color: black;
+        border-style: solid;
+        font-size: 20px;
+       /* transform: translateY(100%);*/
+
+        border-radius: 2rem;
+        text-align: center;
+        color: white;
+        background-color: black;
+      }
+
+   
+
+      #add-btn {
+        position: relative;
+       /* transform: translateY(-235%);*/
+       top: 125px;
+        width: 280px;
+        left: 550px;
+        align-items: left;
+        border-style: solid;
+        background-color: black;
+        color: white;
+      }
+      
+      .static{
+        justify-content: center;
+      
+        text-align: center;
+       transform: translateY(-180%);
+       
+        }
+    
+  
+
+  
+
+      #add {
+        transform: translateY(-640%);
+        position: relative;
+       /* left: -585px;*/
+       
+      }
+  
+      
+
+#thought-box{
+        display: flex;
+        position: relative;
+        
+        flex-direction: column;
+        transform: translateY(0%);
+        flex-wrap: wrap;
+      height: 100px;
+      width: 700px;
+        left: 10px;
+      }
+
+      #d{
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        gap: 15px;
+
+        border-radius: 7%;
+        /*overflow-y: auto;*/
+      }
+     
+    
+      .box{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        height: 100px;
+        width: 700px;
+        background-color: beige;
+       /* overflow-y: auto;*/
+        }
+    
+      .display{
+        display: flex;
+      position: relative;
+      flex-direction: column;
+      flex-wrap: wrap;
+  
+        left: 05px;
+        gap: 20px;
+        transform: translateY(100%);
+        width: 400px;
+        
+        height: 300px;
+        background-color: beige;
+       
+     
+        overflow-y: auto;
+}
+
+.no{
+  width: 400px;
+  height: 300px;
+  background-color: beige;
+  border-radius: 7%;
+  transform: translateY(90%);
+  margin: 5px;
+  padding: 5px;
+}
+
+input{
+      /*  transform: translateY(-20%);*/
+        width: 700px;
+       position: relative;
+
+        height: 100px;
+        gap: 10px;
+        background-color: beige;
+        border-radius: 0%;
+      }
+.area{
+  display: flex;
+  gap: 35px;
+  flex-direction: row;
+  padding: 5pxpx;
+  margin: 5px;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 100%;
+
+}
+.inside-text{
+  margin: 15px;
+  padding: 10px;
+}
+
+
+.edit,.delete{
+
+  background-color: black;
+  color: white;
+}
+
+.change
+{
+  position: relative;
+  justify-content: flex-end;
+  display: inline-flex;
+  top: 40%;
+  left: 55%;
+ 
+  flex-direction: row;
+  width: 160px;
+  height: 30px;
+  
+  gap: 5px;
+
+}
+
+.editbox{
+  width: 300px;
+  height: 400px;
+  background-color: beige;
+}
+      
+     
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      <%if (typeof user!=="undefined"&&user.length>0){%>
+        <h1>WRITE THE WAY YOU LIKE <%=username%></h1>
+    
+        <% }else {%>
+        <h1>WELCOME <%=username%></h1>
+     
+       <!--   <div class="box" id="c" >-->
+          
+           <div class="area">
+              <% if (Listthoughts.length === 0) { %>
+                <div class="no">
+               </p class="p">   No Thoughts</p>
+              </div>
+             
+              <% } else { %> <% Listthoughts.forEach(thought => { %>
+                <div class="display"  id="d"  id="display-<%= thought.id %>" data-id="<%=thought.id%>">
+              <p class="inside-text" id="note-<%= thought.id %>">
+             <%= thought.note %>
+                </p>
+            <!--    <p>Thought ID: <%= //thought.id %></p>-->
+              
+                <br>
+                <br>
+<div class="change">
+
+ <form action="/edit" method="post" >
+
+  <input type="hidden" name="noteId" value="<%= thought.id %>">
+  <input type="hidden" name="username" value="<%= username %>">
+  <input type="hidden" name="user_id" value="<%= user_id %>">
+
+
+  <input id="input<%= thought.id  %>" type="text" name="updatedItemTitle" class="editbox" value="<%=thought.note %>" autocomplete="off"
+    autofocus="true" hidden="true" />
+
+<button id="done<%=thought.id %>" class="edit" type="submit" hidden>DONE</button>
+   
+
+
+     <button id="edit<%=thought.id%>" class="edit"  type="button" onclick="handler('<%=thought.id %>')">EDIT </button>
+
+           
+    </form>
+
+     <form id="deleteForm" method="post" action="/delete" >
+
+      <input type="hidden" name="deleteItemId" value="<%= thought.id %>">
+      <input type="hidden" name="user_id" value="<%= user_id %>">
+      <input type="hidden" name="username" value="<%= username %>">
+
+      <button class="delete" type="submit" >DELETE</button>
+    </form>
+          </div>
+            </div>
+              <% }); %> <% }} %>
+            </div>
+  
+       
+        <form action="/add" method="post" >
+          <div class="static">
+             <input type="hidden" name="user_id" value="<%= user_id %>" />
+            <input type="hidden" name="username" value="<%= username %>" />
+            <button type="submit" class="btn" id="add-btn" onclick="submit()">SUBMIT</button>
+
+            <div class="box" id="thought-box">
+       
+              <input
+                class="input"
+                name="newItem"
+                placeholder="ENTER YOUR THOUGHT HERE"
+                id="txt"
+              />
+         
+            </div>
+          </div>
+                </form>
+       </div>
+     <!--  <button type="button"  class="btn" id="add" onclick="addButton()">
+        ADD NEW THOUGHT
+      </button>-->
+   
+
+   
+
+    <script>
+
+      function handler(id){
+      console.log("edit");
+      document.getElementById("edit" + id).setAttribute("hidden", true);
+      document.getElementById("done" + id).removeAttribute("hidden");
+      document.getElementById("input" + id).removeAttribute("hidden");
+      }
+
+    
+      function addButton() {
+        console.log("clicked");
+    
+      }
+      function Check(){
+        cosnole.log("ok");
+      }
+      
+      function submit(){
+        const submit=0;
+      document.getElementById('add-btn').addEventListener('click',()=>{
+         submit++;
+         console.log(submit);
+         const container = document.getElementById("d");
+        const newBox = document.createElement("div");
+
+       
+        newBox.classList.add("display");
+
+       // newInput.classList.add("input");
+       // newBox.appendChild(newInput);
+        container.appendChild(newBox);
+          
+}
+      )
+    }
+    
+    
+
+    </script>
+  </body>
+</html>

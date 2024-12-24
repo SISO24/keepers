@@ -1,0 +1,13 @@
+body{
+    background-image: url("./keepersbg_page-0001.pdf");
+    background-size: contain;
+}
+
+.login{
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    width: 400px;
+    height: 100ox;
+    background-color: aliceblue;
+}

@@ -1,0 +1,25 @@
+{
+  "name": "keepers",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint:ejs": "ejs-lint/Users/anshs/OneDrive/kEEPERS/views/content.ejs"
+  },
+  "author": "ansh",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "body-parser": "^1.20.2",
+    "dotenv": "^16.4.7",
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "express-session": "^1.18.1",
+    "pg": "^8.12.0"
+  },
+  "devDependencies": {
+    "ejs-lint": "^2.0.0"
+  }
+}
