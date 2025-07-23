@@ -28,7 +28,8 @@ h1 {
   color: black;
   font-weight: 800;
   font-style: bold;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  /*font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;*/
+  font-family: "Roboto Black";
   font-size: 65px;
 }
 
@@ -45,8 +46,8 @@ P {
   left: 5px;
   align-items: left;
   color: black;
-  font-family: Arial, Helvetica, sans-serif;
-  font-style: italic;
+  font-family: "Roboto Medium";
+
   font-size: 45px;
 }
 
